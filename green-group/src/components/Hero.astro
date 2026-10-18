@@ -1,22 +1,13 @@
 ---
+const swappingWords = ["acolhimento", "autoconhecimento"];
+
 const lines = [
-  { text: "Espaço de", italic: false },
-  { text: "acolhimento ", italic: true },
-  {
-    text: "e ", italic: false,
-  },
-  {
-    text: "autoconhecimento ", italic: true,
-  },
   { text: "para construir uma vida mais", italic: false },
   { text: "significativa.", italic: true },
 ];
 ---
 
-<section
-  id="inicio"
-  class="mx-auto w-full max-w-6xl px-6 py-10 lg:px-10 lg:py-16"
->
+<section class="mx-auto w-full max-w-6xl px-6 py-10 lg:px-10 lg:py-16">
   <div class="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
     <div>
       <p class="text-[11px] tracking-[0.22em] text-azul/70">
@@ -26,11 +17,25 @@ const lines = [
       <h1
         class="mt-5 font-serif text-[2.7rem] leading-[1.05] text-azul sm:text-6xl lg:text-[4.25rem]"
       >
+        <span class="fade-line" style="animation-delay: 0.15s">Espaço de</span>
+        <span
+          class="fade-line word-swap italic"
+          style="animation-delay: 0.57s"
+        >
+          {
+            swappingWords.map((word) => (
+              <span class="word" aria-hidden="true">
+                {word}
+              </span>
+            ))
+          }
+        </span>
+        <span class="sr-only">acolhimento e autoconhecimento</span>
         {
           lines.map((line, index) => (
             <span
               class:list={["fade-line", line.italic && "italic"]}
-              style={`animation-delay: ${0.15 + index * 0.42}s`}
+              style={`animation-delay: ${0.99 + index * 0.42}s`}
             >
               {line.text}
             </span>

@@ -1,14 +1,15 @@
 ---
 const words = ["ESCUTA", "SINGULARIDADE", "ACOLHIMENTO"];
-const loop = [...words, ...words];
+const copiesPerLoop = 8;
+const sequence = Array.from({ length: copiesPerLoop }, () => words).flat();
 ---
 
-<div class="overflow-hidden bg-vinho py-4">
-  <div class="marquee-track flex w-max items-center">
+<div class="overflow-hidden bg-vinho py-4" data-marquee aria-hidden="true">
+  <div class="marquee-track flex w-max">
     {
-      [0, 1].map(() => (
-        <ul class="flex items-center">
-          {loop.map((word) => (
+      [false, true].map((isClone) => (
+        <ul class="marquee-group flex shrink-0 items-center" data-cycle={words.length} aria-hidden={isClone}>
+          {sequence.map((word) => (
             <li class="flex items-center text-[11px] tracking-[0.28em] text-bege">
               <span class="px-8">{word}</span>
               <span aria-hidden="true">✦</span>
@@ -19,3 +20,45 @@ const loop = [...words, ...words];
     }
   </div>
 </div>
+
+<script>
+  const pixelsPerSecond = 38;
+
+  const setupMarquee = (root: HTMLElement): void => {
+    const track = root.querySelector<HTMLElement>(".marquee-track");
+    if (!track) return;
+
+    const groups = (): HTMLElement[] => [...track.querySelectorAll<HTMLElement>(".marquee-group")];
+
+    const sync = (): void => {
+      const first = groups()[0];
+      if (!first) return;
+
+      const cycleLength = Number(first.dataset.cycle);
+      let guard = 0;
+      while (first.getBoundingClientRect().width < root.clientWidth && guard < 16) {
+        const pattern = [...first.children].slice(0, cycleLength).map((node) => node.cloneNode(true));
+        groups().forEach((group) => {
+          pattern.forEach((node) => group.append(node.cloneNode(true)));
+        });
+        guard += 1;
+      }
+
+      const shift = first.getBoundingClientRect().width;
+      const shiftValue = `${shift}px`;
+      const duration = `${shift / pixelsPerSecond}s`;
+      if (track.style.getPropertyValue("--marquee-shift") !== shiftValue) {
+        track.style.setProperty("--marquee-shift", shiftValue);
+      }
+      if (track.style.animationDuration !== duration) {
+        track.style.animationDuration = duration;
+      }
+    };
+
+    sync();
+    const observer = new ResizeObserver(sync);
+    observer.observe(root);
+  };
+
+  document.querySelectorAll<HTMLElement>("[data-marquee]").forEach(setupMarquee);
+</script>
