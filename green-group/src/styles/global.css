@@ -61,8 +61,11 @@
 
 .word-swap {
   display: grid;
-  height: 1.05em;
+  align-items: center;
+  height: 1.28em;
   overflow: hidden;
+  font-size: min(1em, calc(100cqi / 8.7));
+  padding-right: 0.08em;
 }
 
 .word-swap .word {
