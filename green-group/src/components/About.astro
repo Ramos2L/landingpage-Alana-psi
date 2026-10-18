@@ -1,0 +1,41 @@
+---
+const paragraphs = [
+  "Meu nome é Alana, sou psicóloga formada pela Universidade Federal de Jataí (UFJ) e especialista em Psicologia Hospitalar e da Saúde. Desde a graduação, me aprofundei em temáticas sociais, como a violência contra a mulher, e atuei com políticas públicas, contextos que me permitiram acompanhar histórias nos mais diversos cenários.",
+  "Realizei estágio extracurricular no Juizado de Violência Doméstica e Familiar Contra a Mulher (JVDFCM), experiência que ampliou minha visão sobre violações de direitos e mecanismos de proteção. Após formada, atuei no Sistema Único de Assistência Social (SUAS) e, atualmente, além da clínica particular, também atuo no Sistema Único de Saúde (SUS), espaços que me permitem acolher cada história e compreender o cuidado em suas múltiplas dimensões.",
+  "Sou apaixonada pela clínica por vários motivos, e talvez o que eu mais admire seja entrar em contato com a nossa capacidade de  aprender e nos transformar.",
+];
+const tags = [
+  "Neuropsicologia",
+  "Psicanálise",
+  "Adolescentes e adultos",
+  "Atendimento online",
+];
+---
+
+<section id="sobre" class="scroll-mt-24 bg-bege">
+  <div class="mx-auto grid max-w-6xl items-center gap-14 px-6 py-24 lg:grid-cols-[280px_1fr] lg:gap-20 lg:px-10">
+    <div class="relative mx-auto">
+      <div class="absolute top-3 left-3 h-full w-full border border-azul" aria-hidden="true"></div>
+      <img src="/perfil2.jpeg" alt="" class="relative h-90 w-full shadow-[0_24px_50px_-32px_rgba(6,43,54,0.45)]" />
+    </div>
+
+    <div>
+      <p class="text-[11px] tracking-[0.22em] text-azul/60">SOBRE MIM</p>
+      <h2 class="mt-4 font-serif text-5xl leading-[1.05] text-azul sm:text-6xl">
+        Oi, que bom te ter aqui!
+      </h2>
+      <div class="mt-8 max-w-xl space-y-4 text-md leading-relaxed text-azul/85">
+        {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <ul class="mt-8 flex flex-wrap gap-2">
+        {
+          tags.map((tag) => (
+            <li class="rounded-full border border-azul/20 px-3 py-1 text-sm text-azul/80">
+              {tag}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

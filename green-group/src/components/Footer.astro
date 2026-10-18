@@ -1,0 +1,46 @@
+---
+import { contact } from "../data/contact";
+---
+
+<footer class="bg-azul-escuro text-bege">
+  <div class="mx-auto grid max-w-6xl gap-12 px-6 py-16 sm:grid-cols-3 lg:px-10">
+    <a href="#inicio" class="shrink-0">
+      <img
+        src="/logotipo-bege.svg"
+        alt="Alana Maciel, psicóloga clínica"
+        class="h-16 w-auto"
+      />
+    </a>
+
+    <div class="text-md">
+      <p class="text-[11px] tracking-[0.18em] text-bege/45">E-MAIL</p>
+      <a href={`mailto:${contact.email}`} class="mt-2 block text-bege/85 hover:text-white">
+        {contact.email}
+      </a>
+      <a href={`tel:${contact.phone}`} class="mt-1 block text-bege/85 hover:text-white">
+        {contact.phone}
+      </a>
+    </div>
+
+    <div class="text-md">
+      <p class="text-[11px] tracking-[0.18em] text-bege/45">INSTAGRAM</p>
+      <a
+        href={contact.instagramUrl}
+        target="_blank"
+        rel="noreferrer"
+        class="mt-2 block text-bege/85 hover:text-white"
+      >
+        {contact.instagram}
+      </a>
+    </div>
+  </div>
+
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 border-t border-bege/10 px-6 py-5 text-sm text-bege/50 lg:px-10">
+    <p>AVISO – Atenção: Este site não oferece atendimento imediato a pessoas em crise suicida. Em caso de ideação ou crise suicida, ligue para o CVV – 188 (atendimento gratuito, 24h). Em caso de risco imediato de morte, ligue para o SAMU – 192 ou para o Corpo de Bombeiros – 193.</p>
+  </div>
+
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 border-t border-bege/10 px-6 py-5 text-sm text-bege/50 lg:px-10">
+    <p>© 2026 Alana Maciel</p>
+    <a href="#inicio" class="hover:text-bege">Voltar ao topo ↑</a>
+  </div>
+</footer>

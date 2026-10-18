@@ -1,0 +1,21 @@
+---
+const words = ["ESCUTA", "SINGULARIDADE", "ACOLHIMENTO"];
+const loop = [...words, ...words];
+---
+
+<div class="overflow-hidden bg-vinho py-4">
+  <div class="marquee-track flex w-max items-center">
+    {
+      [0, 1].map(() => (
+        <ul class="flex items-center">
+          {loop.map((word) => (
+            <li class="flex items-center text-[11px] tracking-[0.28em] text-bege">
+              <span class="px-8">{word}</span>
+              <span aria-hidden="true">✦</span>
+            </li>
+          ))}
+        </ul>
+      ))
+    }
+  </div>
+</div>

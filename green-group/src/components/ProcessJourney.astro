@@ -1,0 +1,240 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Primeiro contato",
+    text: "Envie uma mensagem pelo WhatsApp para tirar suas dúvidas. A partir daí, alinhamos as informações e agendamos sua primeira sessão, presencial ou on-line.",
+  },
+  {
+    number: "02",
+    title: "Espaço seguro e sigiloso ",
+    text: "Tudo o que é compartilhado em sessão é protegido pelo sigilo profissional. Nosso espaço é ético, seguro e livre de julgamentos.",
+  },
+  {
+    number: "03",
+    title: "Início do acompanhamento",
+    text: "Nas primeiras sessões, escuto e acolho sua história e suas queixas, e definimos em conjunto o que você quer transformar.",
+  },
+  {
+    number: "04",
+    title: "Caminhando",
+    text: "As sessões têm duração média de 50 minutos e ocorrem semanalmente, em dia e horário fixos.",
+  },
+  {
+    number: "05",
+    title: "Parceria e autonomia",
+    text: " A psicoterapia tem início e encerramento, mas sem um tempo pré-determinado. Cada processo é único e trabalhamos de forma conjunta para construir a sua autonomia.",
+  },
+];
+
+const curve = "M 22 98 C 140 102, 240 24, 400 22 C 560 20, 760 38, 978 92";
+---
+
+<section id="processo" class="scroll-mt-28 bg-bege lg:h-[168vh]" data-process-journey>
+  <div class="lg:sticky lg:top-28 lg:flex lg:h-[calc(100dvh-7rem)] lg:items-center">
+    <div class="mx-auto w-full max-w-6xl px-6 py-16 lg:px-10 lg:py-8">
+      <p class="flex items-center gap-4 text-[11px] tracking-[0.22em] text-azul/55">
+        COMO O PROCESSO ACONTECE
+        <span class="h-px w-14 bg-azul/30"></span>
+      </p>
+      <h2 class="mt-5 max-w-3xl font-serif text-5xl leading-[1.05] text-azul sm:text-6xl">
+        <span class="sm:hidden">
+          Acompanhar é caminhar em parceria<br />
+        </span>
+        <span class="hidden sm:inline">
+          Acompanhar é caminhar em parceria<br />
+        </span>
+      </h2>
+      <p class="mt-4 max-w-md text-md leading-relaxed text-azul/75">
+        Entenda como funcionam o nosso primeiro contato e as etapas do processo psicoterapêutico.
+      </p>
+
+      <div class="relative mt-14 hidden lg:block" data-journey="desktop">
+        <svg class="w-full overflow-visible text-vinho" viewBox="0 0 1000 112" fill="none" aria-hidden="true">
+          <path d={curve} stroke="currentColor" stroke-width="1.75" stroke-linecap="round" class="opacity-20" />
+          <path
+            data-stroke
+            d={curve}
+            pathLength="1"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-dasharray="1"
+            stroke-dashoffset="1"
+          />
+          <g data-arrow opacity="0">
+            <path
+              d="M -12 -5.2 L 1.2 0 L -12 5.2"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
+        </svg>
+        <ol class="mt-1 grid grid-cols-5 gap-6">
+          {
+            steps.map((step) => (
+              <li data-step>
+                <p data-num class="font-serif text-xs text-azul/40">
+                  {step.number}
+                </p>
+                <h3 class="mt-2 font-serif text-xl leading-snug text-azul">{step.title}</h3>
+                <p class="mt-2 text-md leading-relaxed text-azul/70">{step.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <div class="relative mt-12 lg:hidden" data-journey="mobile">
+        <div class="pointer-events-none absolute top-1 bottom-1 left-[7px] w-px bg-vinho/25" data-mobile-track>
+          <div data-mobile-stroke class="w-full bg-vinho" style="height: 0%"></div>
+          <svg
+            data-mobile-arrow
+            viewBox="0 0 12 12"
+            class="absolute top-0 left-1/2 size-3 -translate-x-1/2 -translate-y-1/2 text-vinho opacity-0"
+            aria-hidden="true"
+          >
+            <path
+              d="M 1.5 3.5 L 6 8.5 L 10.5 3.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <ol class="space-y-8 pl-10">
+          {
+            steps.map((step) => (
+              <li data-step>
+                <p data-num class="font-serif text-xs text-azul/40">
+                  {step.number}
+                </p>
+                <h3 class="mt-1 font-serif text-2xl text-azul">{step.title}</h3>
+                <p class="mt-1 max-w-md text-md leading-relaxed text-azul/70">{step.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  [data-num] {
+    transition: color 0.35s ease;
+  }
+
+  [data-step][data-reached] [data-num] {
+    color: var(--color-vinho);
+  }
+</style>
+
+<script>
+  const section = document.querySelector<HTMLElement>("[data-process-journey]");
+  const desktop = section?.querySelector<HTMLElement>('[data-journey="desktop"]');
+  const mobile = section?.querySelector<HTMLElement>('[data-journey="mobile"]');
+  const stroke = desktop?.querySelector<SVGPathElement>("[data-stroke]");
+  const arrow = desktop?.querySelector<SVGGElement>("[data-arrow]");
+  const mobileStroke = mobile?.querySelector<HTMLElement>("[data-mobile-stroke]");
+  const mobileArrow = mobile?.querySelector<HTMLElement>("[data-mobile-arrow]");
+
+  const clamp = (value: number): number => Math.min(1, Math.max(0, value));
+
+  const isVisible = (element: HTMLElement | null | undefined): element is HTMLElement =>
+    Boolean(element && element.getClientRects().length > 0);
+
+  const readPinnedProgress = (): number => {
+    if (!section) return 0;
+    const rect = section.getBoundingClientRect();
+    const viewHeight = window.innerHeight;
+    const distance = rect.height - viewHeight;
+    const pinStart = 112;
+    if (distance > viewHeight * 0.35) {
+      return clamp((pinStart - rect.top) / (distance + pinStart));
+    }
+    return readTravelProgress(section);
+  };
+
+  const readTravelProgress = (element: HTMLElement): number => {
+    const rect = element.getBoundingClientRect();
+    const start = window.innerHeight * 0.78;
+    const travel = Math.max(rect.height * 0.9, 1);
+    return clamp((start - rect.top) / travel);
+  };
+
+  const markSteps = (root: HTMLElement | null | undefined, progress: number, usePathX: boolean): void => {
+    if (!root) return;
+    const steps = [...root.querySelectorAll<HTMLElement>("[data-step]")];
+    const ratio = usePathX && stroke ? stroke.getPointAtLength(stroke.getTotalLength() * progress).x / 1000 : progress;
+    steps.forEach((step, index) => {
+      const gate = (index + 0.28) / steps.length;
+      if (ratio >= gate) step.setAttribute("data-reached", "");
+      else step.removeAttribute("data-reached");
+    });
+  };
+
+  const renderDesktop = (progress: number): void => {
+    if (!stroke || !arrow || !isVisible(desktop)) return;
+    const length = stroke.getTotalLength();
+    const distance = length * progress;
+    const span = 6;
+    stroke.style.strokeDashoffset = String(1 - progress);
+    const point = stroke.getPointAtLength(distance);
+    const before = stroke.getPointAtLength(Math.max(0, distance - span));
+    const after = stroke.getPointAtLength(Math.min(length, distance + span));
+    const angle = (Math.atan2(after.y - before.y, after.x - before.x) * 180) / Math.PI;
+    arrow.setAttribute("transform", `translate(${point.x} ${point.y}) rotate(${angle})`);
+    arrow.style.opacity = progress <= 0.008 ? "0" : "1";
+    markSteps(desktop, progress, true);
+  };
+
+  const renderMobile = (progress: number): void => {
+    if (!mobileStroke || !mobileArrow || !isVisible(mobile)) return;
+    const percent = `${progress * 100}%`;
+    mobileStroke.style.height = percent;
+    mobileArrow.style.top = percent;
+    mobileArrow.style.opacity = progress <= 0.008 ? "0" : "1";
+    markSteps(mobile, progress, false);
+  };
+
+  const render = (): void => {
+    if (isVisible(desktop)) renderDesktop(readPinnedProgress());
+    if (isVisible(mobile)) renderMobile(readTravelProgress(mobile));
+  };
+
+  if (section && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (stroke) stroke.style.strokeDashoffset = "0";
+    if (arrow && stroke) {
+      const length = stroke.getTotalLength();
+      const point = stroke.getPointAtLength(length);
+      const before = stroke.getPointAtLength(Math.max(0, length - 6));
+      const angle = (Math.atan2(point.y - before.y, point.x - before.x) * 180) / Math.PI;
+      arrow.setAttribute("transform", `translate(${point.x} ${point.y}) rotate(${angle})`);
+      arrow.style.opacity = "1";
+    }
+    if (mobileStroke) mobileStroke.style.height = "100%";
+    if (mobileArrow) {
+      mobileArrow.style.top = "100%";
+      mobileArrow.style.opacity = "1";
+    }
+    markSteps(desktop, 1, false);
+    markSteps(mobile, 1, false);
+  } else if (section) {
+    let frame = 0;
+    const requestRender = (): void => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        render();
+      });
+    };
+    render();
+    window.addEventListener("scroll", requestRender, { passive: true });
+    window.addEventListener("resize", requestRender);
+  }
+</script>

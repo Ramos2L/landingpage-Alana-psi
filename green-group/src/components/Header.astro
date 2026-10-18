@@ -1,0 +1,84 @@
+---
+const links = [
+  { href: "#sobre", label: "Sobre mim" },
+  { href: "#psicoterapia", label: "Psicoterapia" },
+  { href: "#processo", label: "Processo" },
+  { href: "#duvidas", label: "Dúvidas" },
+];
+---
+
+<header class="sticky top-0 z-50 bg-bege/85 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-6 lg:px-10">
+    <a href="#inicio" class="flex shrink-0 items-center gap-2.5">
+      <img src="/logotipo-salmao.svg" alt="" class="h-14 w-auto sm:h-16" />
+      <span class="font-serif text-[1.55rem] leading-[0.82] font-medium text-azul sm:text-[1.75rem]">
+        Alana
+        <br />
+        Maciel
+      </span>
+    </a>
+
+    <div class="hidden items-center gap-8 md:flex">
+      <nav class="flex items-center gap-7">
+        {
+          links.map((link) => (
+            <a href={link.href} class="text-md text-azul/80 transition hover:text-azul">
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+      <a
+        href="#contato"
+        class="inline-flex items-center gap-2 rounded-full bg-azul px-4 py-2 text-md text-bege transition hover:bg-azul-escuro"
+      >
+        Agendar conversa
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <button
+      id="menu-button"
+      type="button"
+      class="text-md text-azul md:hidden"
+      aria-expanded="false"
+      aria-controls="menu"
+    >
+      Menu
+    </button>
+  </div>
+
+  <nav id="menu" class="hidden px-6 pb-6 md:hidden">
+    {
+      links.map((link) => (
+        <a href={link.href} class="block py-2 text-md text-azul/80">
+          {link.label}
+        </a>
+      ))
+    }
+    <a
+      href="#contato"
+      class="mt-3 inline-flex items-center gap-2 rounded-full bg-azul px-4 py-2 text-md text-bege"
+    >
+      Agendar conversa
+      <span aria-hidden="true">→</span>
+    </a>
+  </nav>
+</header>
+
+<script>
+  const button = document.querySelector("#menu-button");
+  const menu = document.querySelector("#menu");
+
+  button?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("hidden") === false;
+    button.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.add("hidden");
+      button?.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>

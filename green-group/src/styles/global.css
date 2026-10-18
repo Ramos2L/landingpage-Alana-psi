@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/Fraunces.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../fonts/PlusJakartaSans-Italic.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+  --color-bege: #fff3d8;
+  --color-salmao: #f2847b;
+  --color-vinho: #5f292b;
+  --color-azul: #1d5a6f;
+  --color-azul-escuro: #062b36;
+  --text-md: 1rem;
+  --text-md--line-height: calc(1.5 / 1);
+}
+
+@keyframes rise-fade {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.font-serif:not(.italic) {
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+
+.fade-line {
+  display: block;
+  opacity: 0;
+  animation: rise-fade 1.35s ease forwards;
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-line {
+    opacity: 1;
+    animation: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}

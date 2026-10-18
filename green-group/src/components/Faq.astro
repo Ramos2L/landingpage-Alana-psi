@@ -1,0 +1,88 @@
+---
+const questions = [
+  {
+    question: "Quando é a hora de começar a psicoterapia?",
+    answer:
+      "Existem diversos motivos para iniciar a psicoterapia. Frequentemente, a busca começa quando vivenciamos algum tipo de sofrimento e sentimos o desejo de mudança. A psicoterapia pode ser para você se o que você busca é:",
+    items: [
+      {
+        title: "Autoconhecimento",
+        text: "uma consciência mais ampla sobre si, suas relações e sua forma de estar no mundo.",
+      },
+      {
+        title: "Relacionamentos",
+        text: "desenvolvimento de vínculos mais saudáveis.",
+      },
+      {
+        title: "Acolhimento em momentos difíceis",
+        text: "suporte emocional em perdas e encerramento de ciclos.",
+      },
+      {
+        title: "Mudança e tomada de decisão",
+        text: "construção de novos comportamentos.",
+      },
+      {
+        title: "Manejo emocional",
+        text: "compreender e transformar a forma como você se relaciona com as suas emoções.",
+      },
+    ],
+  },
+  {
+    question: "Eu preciso falar sobre TUDO?",
+    answer:
+      "Os conteúdos trabalhados nas sessões seguem o ritmo e aquilo que você se sente à vontade para partilhar. A psicoterapia pode ser o espaço onde verbalizamos determinados assuntos em voz alta pela primeira vez, por isso é fundamental que haja respeito aos seus limites e que você se sinta segura(o) para falar sobre a sua vida.",
+  },
+  {
+    question: "Quanto tempo dura cada sessão?",
+    answer:
+      "Cada sessão dura aproximadamente 50 minutos e normalmente acontece uma vez por semana, em dia e horário fixos. Alterações podem acontecer de acordo com a sua necessidade.",
+  },
+  {
+    question: "Existe alta/encerramento da psicoterapia?",
+    answer:
+      "Sim, só não conseguimos determinar em quanto tempo isso vai acontecer. A duração da psicoterapia é atravessada por fatores do próprio processo e externos a ele. Isso porque, o processo terapêutico ocorre em parceria (psicóloga e paciente) e, na maior parte do tempo, fora das nossas sessões. Ou seja, você é parte ativa e indispensável para alcançar os objetivos esperados.",
+  },
+  {
+    question: "Quanto custa a psicoterapia?",
+    answer:
+      "Os valores e horários disponíveis são esclarecidos na conversa inicial pelo WhatsApp, sem compromisso.",
+  },
+];
+---
+
+<section id="duvidas" class="scroll-mt-24 bg-bege">
+  <div class="mx-auto grid max-w-6xl gap-14 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
+    <div class="lg:sticky lg:top-28 lg:order-1 lg:self-start ">
+      <p class="text-[11px] tracking-[0.22em] text-azul/60">DÚVIDAS FREQUENTES</p>
+      <h2 class="mt-4 font-serif text-5xl leading-[1.05] text-azul sm:text-6xl">
+        O que vale a pena saber antes do nosso primeiro contato: 
+      </h2>
+    </div>
+    <div class="lg:order-1">
+      {
+        questions.map((item) => (
+          <details class="group border-b border-azul/10 open:bg-white/40">
+            <summary class="flex cursor-pointer list-none items-center justify-between px-4 gap-6 py-5 text-md text-azul">
+              <span>{item.question}</span>
+              <span class="grid size-7 shrink-0 place-items-center rounded-full border border-azul/20 text-base leading-none transition group-open:rotate-45">
+                +
+              </span>
+            </summary>
+            <div class="max-w-xl pb-5 pr-10 px-4 text-md leading-relaxed text-azul/80">
+              <p>{item.answer}</p>
+              {item.items && (
+                <ul class="mt-3 list-disc space-y-2 pl-5">
+                  {item.items.map((line) => (
+                    <li>
+                      <span class="font-medium text-azul">{line.title}:</span> {line.text}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

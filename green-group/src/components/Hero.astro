@@ -1,0 +1,69 @@
+---
+const lines = [
+  { text: "Espaço de", italic: false },
+  { text: "acolhimento ", italic: true },
+  {
+    text: "e ", italic: false,
+  },
+  {
+    text: "autoconhecimento ", italic: true,
+  },
+  { text: "para construir uma vida mais", italic: false },
+  { text: "significativa.", italic: true },
+];
+---
+
+<section
+  id="inicio"
+  class="mx-auto w-full max-w-6xl px-6 py-10 lg:px-10 lg:py-16"
+>
+  <div class="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+    <div>
+      <p class="text-[11px] tracking-[0.22em] text-azul/70">
+        PSICÓLOGA CLÍNICA • CRP 09/18016
+      </p>
+
+      <h1
+        class="mt-5 font-serif text-[2.7rem] leading-[1.05] text-azul sm:text-6xl lg:text-[4.25rem]"
+      >
+        {
+          lines.map((line, index) => (
+            <span
+              class:list={["fade-line", line.italic && "italic"]}
+              style={`animation-delay: ${0.15 + index * 0.42}s`}
+            >
+              {line.text}
+            </span>
+          ))
+        }
+      </h1>
+
+      <p class="mt-6 max-w-md text-md leading-relaxed text-azul/80">
+        Atendimento psicológico presencial em Jataí/GO e on-line para todo o Brasil. Modalidade voltada para o público adulto. 
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href="#contato"
+          class="inline-flex items-center gap-2 rounded-full bg-azul px-5 py-2.5 text-md text-bege transition hover:bg-azul-escuro"
+        >
+          Agendar uma conversa
+          <span aria-hidden="true">→</span>
+        </a>
+        <a
+          href="#sobre"
+          class="inline-flex items-center gap-2 rounded-full border border-azul/25 px-5 py-2.5 text-md text-azul transition hover:border-azul/50"
+        >
+          Conheça meu trabalho
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class=" mx-auto w-full max-w-[450px]">
+      <div class="relative aspect-[3/3] ">
+        <img src="/perfil3.png" alt="" class="absolute inset-0 h-full w-full object-cover" />
+      </div>
+    </div>
+  </div>
+</section>
