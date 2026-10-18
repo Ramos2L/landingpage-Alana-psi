@@ -50,9 +50,9 @@ const questions = [
 ];
 ---
 
-<section id="duvidas" class="scroll-mt-24 bg-bege">
+<section id="duvidas" class="scroll-mt-32 bg-bege">
   <div class="mx-auto grid max-w-6xl gap-14 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
-    <div class="lg:sticky lg:top-28 lg:order-1 lg:self-start ">
+    <div class="lg:sticky lg:top-32 lg:order-1 lg:self-start ">
       <p class="text-[11px] tracking-[0.22em] text-azul/60">DÚVIDAS FREQUENTES</p>
       <h2 class="mt-4 font-serif text-5xl leading-[1.05] text-azul sm:text-6xl">
         O que vale a pena saber antes do nosso primeiro contato: 
@@ -61,7 +61,7 @@ const questions = [
     <div class="lg:order-1">
       {
         questions.map((item) => (
-          <details class="group border-b border-azul/10 open:bg-white/40">
+          <details class="group border-b border-azul/10 open:bg-bege/40">
             <summary class="flex cursor-pointer list-none items-center justify-between px-4 gap-6 py-5 text-md text-azul">
               <span>{item.question}</span>
               <span class="grid size-7 shrink-0 place-items-center rounded-full border border-azul/20 text-base leading-none transition group-open:rotate-45">

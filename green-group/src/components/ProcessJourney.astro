@@ -30,9 +30,9 @@ const steps = [
 const curve = "M 22 98 C 140 102, 240 24, 400 22 C 560 20, 760 38, 978 92";
 ---
 
-<section id="processo" class="scroll-mt-28 bg-bege lg:h-[168vh]" data-process-journey>
-  <div class="lg:sticky lg:top-28 lg:flex lg:h-[calc(100dvh-7rem)] lg:items-center">
-    <div class="mx-auto w-full max-w-6xl px-6 py-16 lg:px-10 lg:py-8">
+<section id="processo" class="scroll-mt-32 bg-bege lg:min-h-[168vh]" data-process-journey>
+  <div class="lg:sticky lg:top-32 lg:flex lg:min-h-[calc(100dvh-8rem)] lg:items-center">
+    <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-10">
       <p class="flex items-center gap-4 text-[11px] tracking-[0.22em] text-azul/55">
         COMO O PROCESSO ACONTECE
         <span class="h-px w-14 bg-azul/30"></span>
@@ -50,7 +50,7 @@ const curve = "M 22 98 C 140 102, 240 24, 400 22 C 560 20, 760 38, 978 92";
       </p>
 
       <div class="relative mt-14 hidden lg:block" data-journey="desktop">
-        <svg class="w-full overflow-visible text-vinho" viewBox="0 0 1000 112" fill="none" aria-hidden="true">
+        <svg class="w-full overflow-visible text-salmao" viewBox="0 0 1000 112" fill="none" aria-hidden="true">
           <path d={curve} stroke="currentColor" stroke-width="1.75" stroke-linecap="round" class="opacity-20" />
           <path
             data-stroke
@@ -88,12 +88,12 @@ const curve = "M 22 98 C 140 102, 240 24, 400 22 C 560 20, 760 38, 978 92";
       </div>
 
       <div class="relative mt-12 lg:hidden" data-journey="mobile">
-        <div class="pointer-events-none absolute top-1 bottom-1 left-[7px] w-px bg-vinho/25" data-mobile-track>
-          <div data-mobile-stroke class="w-full bg-vinho" style="height: 0%"></div>
+        <div class="pointer-events-none absolute top-1 bottom-1 left-[7px] w-px bg-salmao/25" data-mobile-track>
+          <div data-mobile-stroke class="w-full bg-salmao" style="height: 0%"></div>
           <svg
             data-mobile-arrow
             viewBox="0 0 12 12"
-            class="absolute top-0 left-1/2 size-3 -translate-x-1/2 -translate-y-1/2 text-vinho opacity-0"
+            class="absolute top-0 left-1/2 size-3 -translate-x-1/2 -translate-y-1/2 text-salmao opacity-0"
             aria-hidden="true"
           >
             <path
@@ -130,7 +130,7 @@ const curve = "M 22 98 C 140 102, 240 24, 400 22 C 560 20, 760 38, 978 92";
   }
 
   [data-step][data-reached] [data-num] {
-    color: var(--color-vinho);
+    color: var(--color-salmao);
   }
 </style>
 
@@ -153,7 +153,7 @@ const curve = "M 22 98 C 140 102, 240 24, 400 22 C 560 20, 760 38, 978 92";
     const rect = section.getBoundingClientRect();
     const viewHeight = window.innerHeight;
     const distance = rect.height - viewHeight;
-    const pinStart = 112;
+    const pinStart = 128;
     if (distance > viewHeight * 0.35) {
       return clamp((pinStart - rect.top) / (distance + pinStart));
     }
